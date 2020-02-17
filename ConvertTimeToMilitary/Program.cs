@@ -27,14 +27,11 @@ namespace ConvertTimeToMilitary
 
                 Console.WriteLine("You entered " + userTime);
 
-                var daynight = new String((userTime ?? throw new InvalidOperationException()).Where(Char.IsLetter).ToArray());
+                string daynight = new string((userTime ?? throw new InvalidOperationException()).Where(char.IsLetter).ToArray());
 
                 userTime = userTime.Replace(daynight, "");
 
-
-                string[] uTimeAry;
-                uTimeAry = userTime.Split(':');
-
+                string[] uTimeAry = userTime.Split(':');
 
                 UInt16 hour = UInt16.Parse(uTimeAry[0]);
                 UInt16 min = UInt16.Parse(uTimeAry[1]);
