@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConvertTimeToMilitary
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
 
             Convert();
@@ -26,12 +23,11 @@ namespace ConvertTimeToMilitary
 
                 Console.WriteLine("Enter a standard (non-military) time." + Environment.NewLine);
 
-                string userTime;
-                userTime = Console.ReadLine();
+                string userTime = Console.ReadLine();
 
                 Console.WriteLine("You entered " + userTime);
 
-                var daynight = new String(userTime.Where(Char.IsLetter).ToArray());
+                var daynight = new String((userTime ?? throw new InvalidOperationException()).Where(Char.IsLetter).ToArray());
 
                 userTime = userTime.Replace(daynight, "");
 
@@ -40,8 +36,8 @@ namespace ConvertTimeToMilitary
                 uTimeAry = userTime.Split(':');
 
 
-                UInt16 hour = UInt16.Parse(uTimeAry[0].ToString());
-                UInt16 min = UInt16.Parse(uTimeAry[1].ToString());
+                UInt16 hour = UInt16.Parse(uTimeAry[0]);
+                UInt16 min = UInt16.Parse(uTimeAry[1]);
 
                 //If you want to convert standard time to military time, add 1200 to any time from 1:00pm to 11:00pm.
                 //So if you want to say 6:30pm in military lingo, add 1200 to 6:30 to get 1830.
